@@ -3,14 +3,14 @@ document
   .getElementById("first-class-increase")
   .addEventListener("click", function () {
     updateTicketInfo("first-class", true);
-    costCalculation("first-class");
+    costCalculation();
   });
 
 document
   .getElementById("first-class-decrease")
   .addEventListener("click", function () {
     updateTicketInfo("first-class", false);
-    costCalculation("first-class");
+    costCalculation();
   });
 
 //! ECONOMY CLASS
@@ -18,14 +18,14 @@ document
   .getElementById("economy-class-increase")
   .addEventListener("click", function () {
     updateTicketInfo("economy-class", true);
-    costCalculation("economy-class");
+    costCalculation();
   });
 
 document
   .getElementById("economy-class-decrease")
   .addEventListener("click", function () {
     updateTicketInfo("economy-class", false);
-    costCalculation("economy-class");
+    costCalculation();
   });
 
 // Updating the ticket number
@@ -44,17 +44,12 @@ function updateTicketInfo(ticket, isIncrease) {
 }
 
 // Calculating the cost
-function costCalculation(ticket) {
+function costCalculation() {
   // Subtotal Cost
-
-  const ticketNumber = getTicketClass(ticket);
-  let subtotalCost = 0;
-  if (ticket == "first-class") {
-    subtotalCost = ticketNumber * 150;
-  }
-  if (ticket == "economy-class") {
-    subtotalCost = ticketNumber * 100;
-  }
+  const firstClassTicketNumber = getTicketClass("first-class");
+  const economyClassTicketNumber = getTicketClass("economy-class");
+  const subtotalCost =
+    firstClassTicketNumber * 150 + economyClassTicketNumber * 100;
 
   document.getElementById("subtotal-cost").innerText = subtotalCost;
 
