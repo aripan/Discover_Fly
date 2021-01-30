@@ -1,37 +1,32 @@
-//! FIRST CLASS TICKET
+// First Class Ticket
 document
   .getElementById("first-class-increase")
   .addEventListener("click", function () {
     updateTicketInfo("first-class", true);
-    costCalculation();
   });
 
 document
   .getElementById("first-class-decrease")
   .addEventListener("click", function () {
     updateTicketInfo("first-class", false);
-    costCalculation();
   });
 
-//! ECONOMY CLASS
+// Economy Class Ticket
 document
   .getElementById("economy-class-increase")
   .addEventListener("click", function () {
     updateTicketInfo("economy-class", true);
-    costCalculation();
   });
 
 document
   .getElementById("economy-class-decrease")
   .addEventListener("click", function () {
     updateTicketInfo("economy-class", false);
-    costCalculation();
   });
 
 // Updating the ticket number
-function updateTicketInfo(ticket, isIncrease) {
-  const ticketNumber = getTicketClass(ticket);
-
+function updateTicketInfo(ticketClass, isIncrease) {
+  const ticketNumber = getTicketClass(ticketClass);
   let ticketNumberNew = 0;
   if (isIncrease == true) {
     ticketNumberNew = ticketNumber + 1;
@@ -40,7 +35,8 @@ function updateTicketInfo(ticket, isIncrease) {
     ticketNumberNew = ticketNumber - 1;
   }
 
-  document.getElementById(ticket + "-count").value = ticketNumberNew;
+  document.getElementById(ticketClass + "-count").value = ticketNumberNew;
+  costCalculation();
 }
 
 // Calculating the cost
@@ -62,6 +58,7 @@ function costCalculation() {
   document.getElementById("total-cost").innerText = totalCost;
 }
 
+// Specifying the ticket class & ticket number
 function getTicketClass(ticketClass) {
   const ticketClassInput = document.getElementById(ticketClass + "-count");
   const ticketNumber = parseInt(ticketClassInput.value);
