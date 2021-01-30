@@ -18,21 +18,18 @@ document
   .getElementById("economy-class-increase")
   .addEventListener("click", function () {
     updateTicketInfo("economy-class", true);
-    costCalculation();
+    costCalculation("economy-class");
   });
 
 document
   .getElementById("economy-class-decrease")
   .addEventListener("click", function () {
     updateTicketInfo("economy-class", false);
-    costCalculation();
+    costCalculation("economy-class");
   });
 
 // Updating the ticket number
 function updateTicketInfo(ticket, isIncrease) {
-  // const ticketInput = document.getElementById("first-class-count");
-  // const ticketNumber = parseInt(ticketInput.value);
-
   const ticketNumber = getTicketClass(ticket);
 
   let ticketNumberNew = 0;
@@ -42,19 +39,23 @@ function updateTicketInfo(ticket, isIncrease) {
   if (isIncrease == false && ticketNumber > 0) {
     ticketNumberNew = ticketNumber - 1;
   }
-  // const ticketNumberNew = ticketNumber + 1;
+
   document.getElementById(ticket + "-count").value = ticketNumberNew;
-  // ticketInput.value = ticketNumberNew;
 }
 
 // Calculating the cost
-function costCalculation() {
+function costCalculation(ticket) {
   // Subtotal Cost
-  const ticketInput = document.getElementById("first-class-count");
 
-  const ticketNumber = parseInt(ticketInput.value);
+  const ticketNumber = getTicketClass(ticket);
+  let subtotalCost = 0;
+  if (ticket == "first-class") {
+    subtotalCost = ticketNumber * 150;
+  }
+  if (ticket == "economy-class") {
+    subtotalCost = ticketNumber * 100;
+  }
 
-  const subtotalCost = ticketNumber * 150;
   document.getElementById("subtotal-cost").innerText = subtotalCost;
 
   // Tax Amount
@@ -67,9 +68,7 @@ function costCalculation() {
 }
 
 function getTicketClass(ticketClass) {
-  console.log(ticketClass);
   const ticketClassInput = document.getElementById(ticketClass + "-count");
   const ticketNumber = parseInt(ticketClassInput.value);
-  console.log(ticketNumber);
   return ticketNumber;
 }
