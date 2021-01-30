@@ -36,6 +36,12 @@ function updateTicketInfo(ticketClass, isIncrease) {
   }
 
   document.getElementById(ticketClass + "-count").value = ticketNumberNew;
+
+  // updating in the modal
+  document.getElementById("booked-ticket").innerText =
+    parseInt(document.getElementById("first-class-count").value) +
+    parseInt(document.getElementById("economy-class-count").value);
+
   costCalculation();
 }
 
@@ -49,13 +55,22 @@ function costCalculation() {
 
   document.getElementById("subtotal-cost").innerText = subtotalCost;
 
+  // updating in the modal
+  document.getElementById("subtotal-ticket-cost").innerText = subtotalCost;
+
   // Tax Amount
   const taxAmount = subtotalCost * 0.1;
   document.getElementById("tax-amount").innerText = taxAmount;
 
+  // updating in the modal
+  document.getElementById("ticket-tax-amount").innerText = taxAmount;
+
   // Total Cost
   const totalCost = subtotalCost + taxAmount;
   document.getElementById("total-cost").innerText = totalCost;
+
+  // updating in the modal
+  document.getElementById("total-ticket-cost").innerText = totalCost;
 }
 
 // Specifying the ticket class & ticket number
@@ -63,4 +78,13 @@ function getTicketClass(ticketClass) {
   const ticketClassInput = document.getElementById(ticketClass + "-count");
   const ticketNumber = parseInt(ticketClassInput.value);
   return ticketNumber;
+}
+
+function modalShow() {
+  document.getElementById("my-modal").style.display = "block";
+  // document.getElementById("booked-ticket").innerText = updateTicketInfo();
+}
+
+function modalOff() {
+  document.getElementById("my-modal").style.display = "none";
 }

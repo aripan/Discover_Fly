@@ -15,6 +15,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css"
     />
+
     <link rel="stylesheet" href="style.css" />
   </head>
 
@@ -64,7 +65,6 @@
           </div>
         </div>
 
-        <!-- ! working here now -->
         <div class="input-group f-class">
           <div>
             <label for="">First Class ($150)</label>
@@ -85,12 +85,8 @@
             <button id="first-class-decrease">
               <i class="fas fa-minus"></i>
             </button>
-
-            <!-- <p>+ -</p> -->
           </div>
         </div>
-
-        <!-- ! Ticket section -->
         <div class="input-group f-class">
           <div>
             <label for="">Economy ($100)</label>
@@ -111,12 +107,8 @@
             <button id="economy-class-decrease">
               <i class="fas fa-minus"></i>
             </button>
-
-            <!-- <p>+ -</p> -->
           </div>
         </div>
-
-        <!--! Price section working here also -->
         <div class="calculations">
           <div class="amount">
             <div class="left">
@@ -126,7 +118,6 @@
               <p>$<span id="subtotal-cost">00</span></p>
             </div>
           </div>
-
           <div class="amount">
             <div class="left">
               <p>Charge 10% VAT</p>
@@ -145,7 +136,7 @@
             </div>
           </div>
         </div>
-        <button class="btn-style">Book Now</button>
+        <button onclick="modalShow()" class="btn-style">Book Now</button>
       </div>
 
       <div class="booking-content">
@@ -159,6 +150,51 @@
           ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise
           voluptatibus quam
         </p>
+      </div>
+
+      <!-- MODAL -->
+      <div id="my-modal" class="modal">
+        <div class="message-header">
+          <h2 class="message-title">Details of your booking...</h2>
+        </div>
+        <div class="calculations">
+          <div class="amount">
+            <div class="left">
+              <p>No. of Booked Tickets</p>
+            </div>
+            <div class="right">
+              <p><span id="booked-ticket">0</span></p>
+            </div>
+          </div>
+          <div class="amount">
+            <div class="left">
+              <p>Subtotal</p>
+            </div>
+            <div class="right">
+              <p>$<span id="subtotal-ticket-cost">00</span></p>
+            </div>
+          </div>
+          <div class="amount">
+            <div class="left">
+              <p>Charge 10% VAT</p>
+            </div>
+            <div class="right">
+              <p>$<span id="ticket-tax-amount">00</span></p>
+            </div>
+          </div>
+          <hr />
+          <div class="amount">
+            <div class="left">
+              <p>Total</p>
+            </div>
+            <div class="right">
+              <p>$<span id="total-ticket-cost">00</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="message-footer">
+          <button onclick="modalOff()" class="btn-style">Close</button>
+        </div>
       </div>
     </main>
 
